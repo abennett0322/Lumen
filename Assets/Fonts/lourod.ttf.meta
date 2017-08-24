@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4146bedf775a45c41b45caf12c4313a0
+timeCreated: 1503345988
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: lourod
+  fontNames:
+  - lourod
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

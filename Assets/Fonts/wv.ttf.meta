@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 6bd8bceb7c19dd744863bd1d00474b02
+timeCreated: 1503346069
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: WVelez Logofont
+  fontNames:
+  - WVelez Logofont
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
