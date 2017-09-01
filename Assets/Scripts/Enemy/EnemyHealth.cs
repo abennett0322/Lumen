@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour {
     public int currentHealth;
     public int scoreValue = 10;
 	public ParticleSystem deathEffect;
+	public GameObject pulseBombPickup;
 
     BoxCollider boxCollider;
 	Light enemyLight;
@@ -52,13 +53,22 @@ public class EnemyHealth : MonoBehaviour {
 	public void Death(Vector3 hitPoint, Vector3 hitDirection)
     {
         isDead = true;
-
-        boxCollider.isTrigger = true;
-
 		ScoreManager.score += scoreValue;
 
+		// Death Particle effect
 		Destroy(Instantiate (deathEffect.gameObject, hitPoint, Quaternion.FromToRotation (Vector3.forward, hitDirection)) as GameObject, deathEffect.startLifetime);
 
+		DropPickUp ();
+
+		// Destroy the enemy gameObject
         Destroy(gameObject);
     }
+
+	public void DropPickUp() {
+		float dropChance = Random.Range (0, 100);
+
+		if (dropChance >= 90){
+			Destroy(Instantiate (pulseBombPickup, transform.position, transform.rotation), 5f);
+		}
+	}
 }
