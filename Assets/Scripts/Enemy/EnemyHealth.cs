@@ -67,7 +67,7 @@ public class EnemyHealth : MonoBehaviour {
 	public void DropPickUp() {
 		float dropChance = Random.Range (0, 100);
 
-		if (dropChance >= 90){
+		if (dropChance >= 98){
 			Destroy(Instantiate (pulseBombPickup, transform.position, transform.rotation), 5f);
 		}
 	}
