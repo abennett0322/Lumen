@@ -18,9 +18,6 @@ public class PlayerMovement : MonoBehaviour {
 	int floorMask;						// A layer mask so that a ray can be cast just at gameobjects on the floor level.
 	float camRayLength = 100f;			// The lenght of the ray from the camera into the scene.
 
-
-	CapsuleCollider capsule;
-
 	void Awake() {
 		// Create a layer mask for the floor.
 		floorMask = LayerMask.GetMask ("Floor");
@@ -29,7 +26,6 @@ public class PlayerMovement : MonoBehaviour {
 		playerRigidbody = GetComponent<Rigidbody> ();
 		dashEffect = GetComponentInChildren<ParticleSystem> ();
 
-		capsule = GetComponent<CapsuleCollider> ();
 	}
 
 	void FixedUpdate() {
@@ -77,9 +73,6 @@ public class PlayerMovement : MonoBehaviour {
 
 		// Move the player to it's current position plus the movement.
 		playerRigidbody.MovePosition (transform.position + movement);
-
-
-		float length = capsule.radius + 0.01f;
 
     }
 
