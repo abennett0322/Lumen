@@ -11,7 +11,6 @@ public class PauseGame : MonoBehaviour {
 
 	Button continueButton;
 
-	// Use this for initialization
 	void Start () {
 		gameHUD.enabled = true;
 		pauseMenu.enabled = false;
@@ -19,8 +18,7 @@ public class PauseGame : MonoBehaviour {
 
 		continueButton = pauseMenu.GetComponentInChildren<Button> ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 		// Press "r" to pause the game

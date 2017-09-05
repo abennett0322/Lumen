@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour {
         playerMovement.enabled = false;
         gun.enabled = false;
 
-		Destroy(Instantiate (deathEffect.gameObject, transform.position, transform.rotation) as GameObject, deathEffect.startLifetime);
+		Destroy(Instantiate (deathEffect.gameObject, transform.position, transform.rotation) as GameObject, deathEffect.main.startLifetime.constant);
 		Destroy (gameObject);
     }
 }

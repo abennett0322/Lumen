@@ -54,7 +54,7 @@ public class EnemyHealth : MonoBehaviour {
 		ScoreManager.score += scoreValue;
 
 		// Death Particle effect
-		Destroy(Instantiate (deathEffect.gameObject, hitPoint, Quaternion.FromToRotation (Vector3.forward, hitDirection)) as GameObject, deathEffect.startLifetime);
+		Destroy(Instantiate (deathEffect.gameObject, hitPoint, Quaternion.FromToRotation (Vector3.forward, hitDirection)) as GameObject, deathEffect.main.startLifetime.constant);
 
 		DropPickUp ();
 
