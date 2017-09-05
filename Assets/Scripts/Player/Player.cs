@@ -15,12 +15,12 @@ public class Player : MonoBehaviour {
 
     void Update () {
 		// Weapon input
-        if (Input.GetMouseButton(0))
+		if (Input.GetMouseButton(0) || Input.GetAxis("Fire1") != 0)
         {
             gunController.Shoot();
         }
 
-		if (Input.GetMouseButtonDown(1)) {
+		if (Input.GetButtonDown("PulseBomb")) {
 			if (pulseBombCount > 0) {
 				pulseBombCount--;
 				Vector3 pulseBombLocation = transform.position;

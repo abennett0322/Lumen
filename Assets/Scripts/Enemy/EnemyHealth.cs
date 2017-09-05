@@ -10,14 +10,12 @@ public class EnemyHealth : MonoBehaviour {
 	public ParticleSystem deathEffect;
 	public GameObject pulseBombPickup;
 
-    BoxCollider boxCollider;
 	Light enemyLight;
 	float timeBetweenFlash = .05f;
     bool isDead;
 
     void Awake()
     {
-        boxCollider = GetComponent<BoxCollider> ();
 		enemyLight = GetComponent<Light> ();
 
         currentHealth = startingHealth;

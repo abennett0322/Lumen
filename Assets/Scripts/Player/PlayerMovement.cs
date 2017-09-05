@@ -11,12 +11,15 @@ public class PlayerMovement : MonoBehaviour {
     float dashSpeed = 1f;       			// The speed the player will dash at.
 	int dashTime = 0;						
     public bool dashing = false;
+	bool oldTriggerHeld;
 
 	Vector3 movement;					// The vector to store the direction of the players movement.
 	Rigidbody playerRigidbody;			// Reference to the player's rigidbody.
 	ParticleSystem dashEffect;			// Reference to the player's dash particle effect.
 	int floorMask;						// A layer mask so that a ray can be cast just at gameobjects on the floor level.
 	float camRayLength = 100f;			// The lenght of the ray from the camera into the scene.
+
+	public bool usingXboxController;
 
 	void Awake() {
 		// Create a layer mask for the floor.
@@ -33,8 +36,12 @@ public class PlayerMovement : MonoBehaviour {
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
-		// Turn the player to face the mouse curser.
-		Turning ();
+		// If not using Xbox controller, turn the player to face the mouse curser.
+		if (!usingXboxController) {
+			Turning ();
+		} else {
+			ControllerTurning ();
+		}
 
 		// Move the player around the scene.
 		Move (h, v);
@@ -55,13 +62,15 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
+		bool newTriggerHeld = Input.GetAxis ("Dash") > 0f;
         // Use the Dash ability by pressing down the space bar.
-        if (Input.GetKeyDown("space"))
+		if (Input.GetKeyDown("space") || (!oldTriggerHeld && newTriggerHeld))
         {
             dashing = true;
 			dashEffect.Play ();
 			dashTime = 8;
 		}
+		oldTriggerHeld = newTriggerHeld;
     }
 
     void Move (float h, float v) {
@@ -113,6 +122,14 @@ public class PlayerMovement : MonoBehaviour {
 				playerRigidbody.MoveRotation (newRotation);
 
 			}
+		}
+	}
+
+	void ControllerTurning() {
+		Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("LookHorizontal") + Vector3.forward * -Input.GetAxisRaw("LookVertical");
+		playerDirection = playerDirection.normalized;
+		if (playerDirection.sqrMagnitude > 0f) {
+			transform.rotation = Quaternion.LookRotation (playerDirection, Vector3.up);
 		}
 	}
 
