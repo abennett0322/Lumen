@@ -6,7 +6,6 @@ public class Player : MonoBehaviour {
 
     GunController gunController;
 	public PulseBomb pulseBomb;
-	public int pulseBombCount = 3;
 
     void Awake()
     {
@@ -21,8 +20,8 @@ public class Player : MonoBehaviour {
         }
 
 		if (Input.GetButtonDown("PulseBomb")) {
-			if (pulseBombCount > 0) {
-				pulseBombCount--;
+			if (PulseBombManager.pulseBombCount > 0) {
+				PulseBombManager.pulseBombCount--;
 				Vector3 pulseBombLocation = transform.position;
 				pulseBombLocation.y = 0;
 				PulseBomb newPulseBomb = Instantiate (pulseBomb, pulseBombLocation, transform.rotation) as PulseBomb;

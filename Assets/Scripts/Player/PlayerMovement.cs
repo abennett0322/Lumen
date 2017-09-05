@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -8,9 +9,13 @@ public class PlayerMovement : MonoBehaviour {
 	public GameObject weaponLocation;		// The location of the weapon the player is holding.
 	public GunController gun;				// Reference to the GunController script.
 
+	public Slider dashSlider;
+	public bool dashing = false;
     float dashSpeed = 1f;       			// The speed the player will dash at.
-	int dashTime = 0;						
-    public bool dashing = false;
+	int dashTime = 0;
+	float dashTimer = 100f;
+	float nextDashTime = 100f;
+	public float dashResetSpeed = 15f;
 	bool oldTriggerHeld;
 
 	Vector3 movement;					// The vector to store the direction of the players movement.
@@ -62,15 +67,25 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
+		dashSlider.value = dashTimer;
+
 		bool newTriggerHeld = Input.GetAxis ("Dash") > 0f;
         // Use the Dash ability by pressing down the space bar.
 		if (Input.GetKeyDown("space") || (!oldTriggerHeld && newTriggerHeld))
         {
-            dashing = true;
-			dashEffect.Play ();
-			dashTime = 8;
+			if (dashTimer >= nextDashTime) {
+				dashing = true;
+				dashEffect.Play ();
+				dashTime = 8;
+				dashTimer = 0;
+			}
+
 		}
 		oldTriggerHeld = newTriggerHeld;
+
+		if (dashTimer < nextDashTime) {
+			dashTimer += Time.deltaTime * dashResetSpeed;
+		}
     }
 
     void Move (float h, float v) {
