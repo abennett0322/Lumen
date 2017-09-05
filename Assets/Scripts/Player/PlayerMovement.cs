@@ -13,8 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool dashing = false;
     float dashSpeed = 1f;       			// The speed the player will dash at.
 	int dashTime = 0;
-	float dashTimer = 100f;
-	float nextDashTime = 100f;
+	float nextDashTimer = 100f;
 	public float dashResetSpeed = 15f;
 	bool oldTriggerHeld;
 
@@ -67,24 +66,24 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
-		dashSlider.value = dashTimer;
+		dashSlider.value = nextDashTimer;
 
 		bool newTriggerHeld = Input.GetAxis ("Dash") > 0f;
         // Use the Dash ability by pressing down the space bar.
 		if (Input.GetKeyDown("space") || (!oldTriggerHeld && newTriggerHeld))
         {
-			if (dashTimer >= nextDashTime) {
+			if (nextDashTimer >= dashSlider.maxValue) {
 				dashing = true;
 				dashEffect.Play ();
 				dashTime = 8;
-				dashTimer = 0;
+				nextDashTimer = 0;
 			}
 
 		}
 		oldTriggerHeld = newTriggerHeld;
 
-		if (dashTimer < nextDashTime) {
-			dashTimer += Time.deltaTime * dashResetSpeed;
+		if (nextDashTimer < dashSlider.maxValue) {
+			nextDashTimer += Time.deltaTime * dashResetSpeed;
 		}
     }
 

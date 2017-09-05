@@ -24,8 +24,9 @@ public class Player : MonoBehaviour {
 				PulseBombManager.pulseBombCount--;
 				Vector3 pulseBombLocation = transform.position;
 				pulseBombLocation.y = 0;
-				PulseBomb newPulseBomb = Instantiate (pulseBomb, pulseBombLocation, transform.rotation) as PulseBomb;
+				Instantiate (pulseBomb, pulseBombLocation, transform.rotation);
 			}
 		}
+
 	}
 }
