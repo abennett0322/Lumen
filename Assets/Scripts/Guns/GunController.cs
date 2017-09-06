@@ -6,7 +6,7 @@ public class GunController : MonoBehaviour {
 
     public Transform weaponHold;                // The location the gun will be equipped to the gameObject.
     public Gun startingGun;                     // The gun the gameObject will start with.
-    public Gun equippedGun;                            // Variable to store the currently equipped gun.
+    public Gun equippedGun;                     // Variable to store the currently equipped gun.
 
     void Awake()
     {
