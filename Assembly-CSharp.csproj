@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Managers\PulseBombManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\PauseGame.cs" />
+     <Compile Include="Assets\Scripts\Pickups\GunPickup.cs" />
      <Compile Include="Assets\Scripts\Pickups\PickupRotation.cs" />
      <Compile Include="Assets\Scripts\Pickups\PulseBombPickup.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />

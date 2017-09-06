@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour {
     public int currentHealth;
     public int scoreValue = 10;
 	public ParticleSystem deathEffect;
-	public GameObject pulseBombPickup;
+	public GameObject[] pickups;
 
 	Light enemyLight;
 	float timeBetweenFlash = .05f;
@@ -64,9 +64,10 @@ public class EnemyHealth : MonoBehaviour {
 
 	public void DropPickUp() {
 		float dropChance = Random.Range (0, 100);
+		int pickupIndex = Random.Range (0, pickups.Length);
 
 		if (dropChance >= 98){
-			Destroy(Instantiate (pulseBombPickup, transform.position, transform.rotation), 5f);
+			Destroy(Instantiate (pickups[pickupIndex], transform.position, transform.rotation), 8f);
 		}
 	}
 }
