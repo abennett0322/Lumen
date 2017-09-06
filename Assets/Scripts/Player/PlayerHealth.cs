@@ -10,8 +10,6 @@ public class PlayerHealth : MonoBehaviour {
     public Slider healthSlider;
 	public ParticleSystem deathEffect;
 
-    PlayerMovement playerMovement;
-    Gun gun;
 	Material playerMaterial;
 	Light playerLight;
 	float timeBetweenFlash = .05f;
@@ -19,8 +17,6 @@ public class PlayerHealth : MonoBehaviour {
 
     void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        gun = GetComponentInChildren<Gun>();
         currentHealth = startingHealth;
 		playerMaterial = GetComponent<Renderer> ().material;
 		playerLight = GetComponent<Light> ();
@@ -55,9 +51,6 @@ public class PlayerHealth : MonoBehaviour {
     void Death()
     {
         isDead = true;
-
-        playerMovement.enabled = false;
-        gun.enabled = false;
 
 		Destroy(Instantiate (deathEffect.gameObject, transform.position, transform.rotation) as GameObject, deathEffect.main.startLifetime.constant);
 		Destroy (gameObject);
