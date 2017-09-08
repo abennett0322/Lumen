@@ -8,6 +8,8 @@ public class GunController : MonoBehaviour {
     public Gun startingGun;                     // The gun the gameObject will start with.
     public Gun equippedGun;                     // Variable to store the currently equipped gun.
 
+	public float gunPickupTimer = 0;
+
     void Awake()
     {
         // Equip the starting gun on awake
@@ -16,6 +18,17 @@ public class GunController : MonoBehaviour {
             EquipGun(startingGun);
         }
     }
+
+	void Update() {
+
+		if (gunPickupTimer > 0){
+			gunPickupTimer -= Time.deltaTime;
+		}
+
+		if (equippedGun.name != string.Format("{0}(Clone)", startingGun.name) && gunPickupTimer <= 0) {
+			EquipGun (startingGun);
+		}
+	}
 
     public void EquipGun(Gun gunToEquip)
     {

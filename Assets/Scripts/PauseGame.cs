@@ -22,7 +22,7 @@ public class PauseGame : MonoBehaviour {
 	void Update () {
 		
 		// Press "r" to pause the game
-		if(Input.GetKeyDown("r")) {
+		if(Input.GetButtonDown("Pause")) {
 			Pause ();
 		}
 
